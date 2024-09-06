@@ -1,0 +1,9 @@
+function tryCatchPokemon() 
+{
+
+}
+
+function chooseMyPokemon() 
+{
+
+}
