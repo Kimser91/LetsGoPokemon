@@ -9,9 +9,9 @@ function updateView()
         <div class="players" id="opponent">${lookForPokemon()}</div>
         </div>
         <div class="playerField">
-        <div class="players" id="player">${model.data.lastUsedPokemon.name}</div>
+        <div class="players" id="player">${myPokemon()}</div>
         </div>
-        <div>
+        <div class="buttonBox">
             <button onclick="updateView()">Look for Pokemon</button>
             <button onclick="tryCatchPokemon()">Throw Pokeball</button>
             <button onclick="PokeDexView()">PokeDex</button>
@@ -29,6 +29,7 @@ function PokeDexView()
     <div class="dexDisplay" id="display">
     ${printPokeDex()}
     </div>
+    <button onclick="updateView()">Try find more</button>
     `
 }
 
@@ -59,6 +60,7 @@ function pokemonInventory () {
     </div>
     <span>choose your pokemon by index:</span>
     <input type="number" onchange="chooseMyPokemon(this.value)">
+    <button onclick="updateView()">Try find more</button>
     `
 }
 
@@ -85,19 +87,55 @@ function printPokemonInventory()
 function lookForPokemon()
 {
     let i = Math.floor(Math.random()* model.data.wildPokemon.length)
-    let showPokemon = model.data.wildPokemon[i]
-    if (!model.data.pokeDex.includes(showPokemon)) 
+    model.data.showPokemon = model.data.wildPokemon[i]
+    if (!model.data.pokeDex.includes(model.data.showPokemon)) 
         {
-            model.data.pokeDex.push(showPokemon)
+            model.data.pokeDex.push(model.data.showPokemon)
         }
+    
     let oponent = 
     `
-    <div class="players" id="oponent">
-    <img src="${showPokemon.img}" alt="pokemon picture">
-    <div class="info" id="name">Name: ${showPokemon.name}</div>
-    <div class="info" id="level">Level: ${showPokemon.level}</div>
-    </div>
+    
+    <img src="${model.data.showPokemon.img}" alt="pokemon picture">
+    <div class="info" id="name">Name: ${model.data.showPokemon.name}</div>
+    <div class="info" id="level">Level: ${model.data.showPokemon.level}</div>
+    
     `
-
+        
     return oponent;
+}
+
+function myPokemon()
+{
+    let playedPokemon =
+    `
+    <img src="${model.data.lastUsedPokemon.img}" alt="pokemon picture">
+    <div class="info" id="name">Name: ${model.data.lastUsedPokemon.name}</div>
+    <div class="info" id="level">Level: ${model.data.lastUsedPokemon.level}</div>
+    `
+    return playedPokemon;
+}
+
+function caughtPokemon() 
+{
+    html.innerHTML = /*html*/
+    `
+    <div>You chaught a: </div>
+    <img src="${model.data.showPokemon.img}" alt="pokemon picture">
+    <div class="info" id="name">Name: ${model.data.showPokemon.name}</div>
+    <div class="info" id="level">Level: ${model.data.showPokemon.level}</div>
+    <button onclick="updateView()">Try find more</button>
+    `
+  
+}
+
+function gotAway() 
+{
+    html.innerHTML = /*html*/
+    `
+    <div class="looseBox">${model.data.showPokemon.name} got away,<br> 
+         better luck next time
+    </div>
+    <button onclick="updateView()">Try find more</button>
+    `
 }

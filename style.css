@@ -1,0 +1,66 @@
+body 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.playerField
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 600px;
+    height: 200px;
+    background-color: blue;
+}
+
+.oponentField
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    width: 600px;
+    height: 200px;
+    background-color: red;
+}
+
+.players
+{
+    margin: 30px;
+}
+
+img
+{
+    max-height: 120px;
+    max-width: fit-content;
+}
+button 
+{
+    width: 130px;
+    height: 50px;
+    margin: 5px;
+    margin-top: 25px;
+}
+
+.buttonBox
+{
+    display: flex;
+    width: 600px;
+    height: 100px;
+    justify-content: space-evenly;
+    background-color: coral;
+}
+
+.looseBox 
+{
+    display: flex;
+    width: 300px;
+    height: 150px;
+    background-color: blueviolet;
+    justify-content: center;
+}
+
