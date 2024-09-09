@@ -5,12 +5,18 @@ function updateView()
     html.innerHTML = /*html*/ 
     `
     <div class="container" id="main">
+    <div class="oponentField">
         <div class="players" id="opponent">${lookForPokemon()}</div>
-        <div class="players" id="player"></div>
+        </div>
+        <div class="playerField">
+        <div class="players" id="player">${model.data.lastUsedPokemon.name}</div>
+        </div>
         <div>
             <button onclick="updateView()">Look for Pokemon</button>
             <button onclick="tryCatchPokemon()">Throw Pokeball</button>
             <button onclick="PokeDexView()">PokeDex</button>
+            <button onclick="pokemonInventory()">Invventory</button>
+            
         </div>
     </div>
     `
@@ -43,6 +49,37 @@ function printPokeDex()
 
     return list;
     
+}
+
+function pokemonInventory () {
+    html.innerHTML = /*html*/ 
+    `
+    <div class="dexDisplay" id="display">
+    ${printPokemonInventory()}
+    </div>
+    <span>choose your pokemon by index:</span>
+    <input type="number" onchange="chooseMyPokemon(this.value)">
+    `
+}
+
+function printPokemonInventory() 
+{
+    let list ="";
+    for(let i = 0; i < model.data.myPokemon.length; i++)
+    {
+      list += 
+            `
+            <div class="frame" id="pokemon">
+            ${i}
+            <img src="${model.data.myPokemon[i].img}" alt="pokemon picture">
+            <div class="info" id="name">Name: ${model.data.myPokemon[i].name}</div>
+            <div class="info" id="level">Level: ${model.data.myPokemon[i].level}</div>
+            </div>
+            `
+    }
+
+    return list;
+
 }
 
 function lookForPokemon()

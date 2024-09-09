@@ -43,9 +43,25 @@ const model = {
             },
         ],
 
-        myPokemon: [],
-        myActivePokemon: {},
-        lastUsedPokemon: {},
+        myPokemon: [
+            {
+                name: "Pikachu",
+                health: 100,
+                level: 10,
+                img: ""
+                },
+                {
+                name: "Charmander",
+                health: 80,
+                level: 3,
+                img: ""
+                }
+        ],
+        lastUsedPokemon: { 
+            name: "Pikachu",
+            health: 100,
+            level: 10,
+            img: ""},
         categories: ['grass', 'water', 'fire', 'earth', 'electric', 'psycic'],
         pokeDex: [
             {
