@@ -1,7 +1,7 @@
 function tryCatchPokemon() 
 {
-let r = Math.floor(Math.random()*20)
-if (r <= 10) 
+let r = Math.floor(Math.random()*100)
+if (r - model.data.showPokemon.level >= 40) 
     {
         model.data.myPokemon.push(model.data.showPokemon)
         caughtPokemon()
